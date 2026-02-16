@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Contoso" constructor="HotToast" version="0.0.1" display-name-key="HotToast" description-key="HotToast description" control-type="virtual" >
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <external-service-usage enabled="false">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <property name="triggerKey" display-name-key="TriggerKey_Display" description-key="TriggerKey_Desc" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="message" display-name-key="Message_Display" description-key="Message_Desc" of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+    <property name="variant" display-name-key="Variant_Display" description-key="Variant_Desc" of-type="Enum" usage="input" required="false" default-value="info">
+      <value name="info" display-name-key="Variant_Info">info</value>
+      <value name="success" display-name-key="Variant_Success">success</value>
+      <value name="warning" display-name-key="Variant_Warning">warning</value>
+      <value name="error" display-name-key="Variant_Error">error</value>
+      <value name="danger" display-name-key="Variant_Danger">danger</value>
+    </property>
+    <property name="durationMs" display-name-key="DurationMs_Display" description-key="DurationMs_Desc" of-type="Whole.None" usage="input" required="false" default-value="3000" />
+    <property name="position" display-name-key="Position_Display" description-key="Position_Desc" of-type="Enum" usage="input" required="false" default-value="top-right">
+      <value name="top-right" display-name-key="Position_TopRight">top-right</value>
+      <value name="top-left" display-name-key="Position_TopLeft">top-left</value>
+      <value name="bottom-right" display-name-key="Position_BottomRight">bottom-right</value>
+      <value name="bottom-left" display-name-key="Position_BottomLeft">bottom-left</value>
+    </property>
+    <property name="maxToasts" display-name-key="MaxToasts_Display" description-key="MaxToasts_Desc" of-type="Whole.None" usage="input" required="false" default-value="3" />
+    <property name="size" display-name-key="Size_Display" description-key="Size_Desc" of-type="Enum" usage="input" required="false" default-value="md">
+      <value name="sm" display-name-key="Size_Sm">sm</value>
+      <value name="md" display-name-key="Size_Md">md</value>
+      <value name="lg" display-name-key="Size_Lg">lg</value>
+    </property>
+    <property name="bgColor" display-name-key="BgColor_Display" description-key="BgColor_Desc" of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+    <property name="textColor" display-name-key="TextColor_Display" description-key="TextColor_Desc" of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+    <property name="accentColor" display-name-key="AccentColor_Display" description-key="AccentColor_Desc" of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+    <property name="radiusPx" display-name-key="RadiusPx_Display" description-key="RadiusPx_Desc" of-type="Whole.None" usage="input" required="false" default-value="10" />
+    <property name="minWidthPx" display-name-key="MinWidthPx_Display" description-key="MinWidthPx_Desc" of-type="Whole.None" usage="input" required="false" default-value="220" />
+    <property name="maxWidthPx" display-name-key="MaxWidthPx_Display" description-key="MaxWidthPx_Desc" of-type="Whole.None" usage="input" required="false" default-value="420" />
+    <property name="iconPosition" display-name-key="IconPosition_Display" description-key="IconPosition_Desc" of-type="Enum" usage="input" required="false" default-value="left">
+      <value name="left" display-name-key="IconPosition_Left">left</value>
+      <value name="right" display-name-key="IconPosition_Right">right</value>
+    </property>
+    <property name="iconSet" display-name-key="IconSet_Display" description-key="IconSet_Desc" of-type="Enum" usage="input" required="false" default-value="emoji">
+      <value name="emoji" display-name-key="IconSet_Emoji">emoji</value>
+      <value name="minimal" display-name-key="IconSet_Minimal">minimal</value>
+      <value name="bold" display-name-key="IconSet_Bold">bold</value>
+    </property>
+    <!--
+      Property node's of-type attribute can be of-type-group attribute.
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <css path="css/HotToast.css" order="1" />
+      <code path="index.ts" order="2"/>
+      <platform-library name="React" version="16.14.0" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/HotToast.css" order="1" />
+      <resx path="strings/HotToast.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
