@@ -9,9 +9,9 @@ Shared catalog of PCF (Power Apps) components. Each component lives under `compo
 
 ## How to use
 
-1) Build a solution ZIP in `solution/<SolutionName>`.
-2) Import the ZIP into Power Apps.
-3) Add the component in Canvas Studio.
+1. Build a solution ZIP in `solution/<SolutionName>`.
+2. Import the ZIP into Power Apps.
+3. Add the component in Canvas Studio.
 
 Details live in each component README.
 

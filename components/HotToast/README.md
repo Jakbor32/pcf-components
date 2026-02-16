@@ -1,5 +1,7 @@
 # HotToast
 
+![HotToast preview](assets/HotToast.gif)
+
 1. Import the solution ZIP.
 2. Add the HotToast component to the screen.
 3. Set only `message` and bind `triggerKey` to a value that always changes.
